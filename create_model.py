@@ -8,7 +8,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 # -----------------------------
 # AUTO CREATE DATASET FOLDERS
 # -----------------------------
-classes = ["Healthy", "Powdery_Mildew", "Rust", "Leaf_Spot"]
+classes = ["Healthy", "Powdery_Mildew", "Rust", "Leaf_Spot", "Early_Blight", "Late_Blight", "Septoria_Leaf_Spot", "Downy_Mildew", "Anthracnose", "Fusarium_Wilt", "Bacterial_Spot", "Cercospora_Leaf_Spot"]
 
 os.makedirs("dataset", exist_ok=True)
 

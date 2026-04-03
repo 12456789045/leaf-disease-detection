@@ -31,14 +31,6 @@ classes = [
     "Powdery_Mildew",
     "Rust",
     "Leaf_Spot",
-    "Early_Blight",
-    "Late_Blight",
-    "Septoria_Leaf_Spot",
-    "Downy_Mildew",
-    "Anthracnose",
-    "Fusarium_Wilt",
-    "Bacterial_Spot",
-    "Cercospora_Leaf_Spot",
 ]
 
 disease_desc = {
@@ -46,14 +38,6 @@ disease_desc = {
     "Powdery_Mildew": "White powdery fungal growth on leaves, stems, or buds.",
     "Rust": "Small reddish-brown or orange pustules on leaf surfaces caused by fungal spores.",
     "Leaf_Spot": "Dark circular spots with yellow halos caused by fungi or bacteria.",
-    "Early_Blight": "Concentric dark spots appearing on older leaves of plants.",
-    "Late_Blight": "Brown lesions with white fungal growth on leaf surface.",
-    "Septoria_Leaf_Spot": "Small dark spots with light centers, often on older leaves.",
-    "Downy_Mildew": "Yellow patches on leaves with downy growth underneath.",
-    "Anthracnose": "Dark sunken lesions on leaves, stems, or fruits.",
-    "Fusarium_Wilt": "Wilting and yellowing due to vascular infection.",
-    "Bacterial_Spot": "Small water-soaked lesions on leaves that turn brown.",
-    "Cercospora_Leaf_Spot": "Brown or gray circular spots with dark borders.",
 }
 
 disease_prev = {
@@ -61,14 +45,6 @@ disease_prev = {
     "Powdery_Mildew": "Apply neem oil or sulfur-based fungicides. Improve air circulation.",
     "Rust": "Remove infected leaves. Use resistant varieties. Apply fungicides if needed.",
     "Leaf_Spot": "Avoid overwatering. Remove infected leaves. Use copper fungicides.",
-    "Early_Blight": "Remove infected leaves, rotate crops, and use fungicides.",
-    "Late_Blight": "Apply appropriate fungicides and avoid overhead watering.",
-    "Septoria_Leaf_Spot": "Remove old infected leaves, use disease-resistant varieties.",
-    "Downy_Mildew": "Improve ventilation and use fungicides for infected crops.",
-    "Anthracnose": "Remove infected parts and apply fungicides if necessary.",
-    "Fusarium_Wilt": "Use resistant varieties and crop rotation to prevent spread.",
-    "Bacterial_Spot": "Remove infected leaves and avoid wetting foliage.",
-    "Cercospora_Leaf_Spot": "Apply fungicides and ensure proper spacing for air circulation.",
 }
 
 
@@ -82,7 +58,13 @@ def load_my_model(path="model.keras"):
             f"❌ {path} not found. Please train and place the model in the folder."
         )
         st.stop()
-    return load_model(path)
+    model = load_model(path)
+    if model.output_shape[-1] != len(classes):
+        st.error(
+            f"❌ Model has {model.output_shape[-1]} classes, but code expects {len(classes)}. Please retrain the model or update the classes list."
+        )
+        st.stop()
+    return model
 
 
 model = load_my_model()
