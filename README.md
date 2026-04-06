@@ -193,6 +193,7 @@ This ensures **only leaf images** are processed.
 
 ## 👨‍💻 Author
 
-Leaf Disease Detection AI using Streamlit + MobileNetV2 for smart agriculture.
+Hrishikesh Kulkarni
+python|FastAPI|Streamlit|AI Developer
 
 ---
