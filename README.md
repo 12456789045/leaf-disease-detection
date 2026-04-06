@@ -2,7 +2,7 @@
 
 An AI-powered **Leaf Disease Detection Web App** built using **Streamlit** and **TensorFlow MobileNetV2**.
 Users can upload or capture leaf images, detect plant diseases, and store prediction history with authentication.
-
+PYTHON|STREAMLIT|LICENSE|MIT
 ---
 
 ## 🚀 Features
